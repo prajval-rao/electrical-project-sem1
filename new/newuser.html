@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New user</title>
+</head>
+<style>
+    h1 {
+        background: linear-gradient(180deg, #494580, #717FAD);
+        color: rgba(255, 255, 255, 0.966);
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: right;
+        height: 90px;
+        padding-top: 2.5%;
+        padding-right: 10%;
+    }
+    h2 {
+        font-family: Helvetica, Arial, sans-serif;
+        color: rgb(26, 25, 25)
+    }
+    h3 {
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    .box {
+        background-color: rgb(251, 252, 255);
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+    }
+    input {
+        width: 300px;
+        height: 20px;
+        border-color: #e7dcea;
+        border-width: 0.5px;
+    }
+    option {
+        width: 300px;
+        height: 20px;
+        border-color: #e7dcea;
+        border-width: 0.5px;
+    }
+    select {
+        height: 30px;
+        border-color: #e7dcea;
+        border-width: 0.5px;
+    }
+    .submit_button {
+        background-color: #898cc5;
+        color: whitesmoke;
+        height: 30px;
+        border-radius: 5px;
+        border-width: 0;
+        font-size:14px;
+    }
+    .inline {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 50px;
+        margin-right: 225px;
+    }
+    button {
+        background-color: #898cc5;
+        border-radius: 5px;
+        border-width: 0px;
+        width: 120px;
+        height: 30px;
+        color: #EEEEEE;
+        cursor: pointer;
+    }
+    video {
+        width: 400px;
+        height: 300px;
+        background: #000;
+        display: block;
+        margin-bottom: 20px;
+        background-color: #EEEEEE;
+        border-radius: 10px;
+        padding: 15px;
+    }
+    .button_inline {
+        margin-left: 1180px;
+    }
+</style>
+<body style="background-image: linear-gradient(to right, #242745, #40457c);">
+    <h1>Welcome to the facial recognition portal! </h1>
+    <h3 style="padding-left: 10px; color: rgb(231, 231, 231); display:flex">Sign-up as a new user
+        <form action="/signin" method="post" style="display: flex" class="button_inline">
+            <button type="submit">Sign in</button>
+        </form>
+    </h3>
+    <hr>
+    <form action="/submit" method="post" class="box" style="display: flex; align-items: flex-start">
+        <video id="cam" autoplay playsinline class="inline" style="display: flex; align-items: flex-start"></video>
+        <div>
+            <h2>Enter details</h2>
+            <h3>Name     <input type="text" id="name" name="name" placeholder="Name"></h3>
+            <h3>Age      <input type="text" id="age" name="age" placeholder="Age"></h3>
+            <h3>College  <input type="text" id="college" name="college" placeholder="College"></h3>
+            <h3><label for="month">Birth month:</label>
+            <select id="month" name="month">
+            <option value="" disabled selected>Select month</option>
+            <option value="January">January</option><option value="February">February</option><option value="March">March</option>
+            <option value="April">April</option><option value="May">May</option><option value="June">June</option>
+            <option value="July">July</option><option value="August">August</option><option value="September">September</option>
+            <option value="October">October</option><option value="November">November</option><option value="December">December</option>
+            </select>
+            Year    <input type="text" id="year" name="year" placeholder="Year" style="width:150px"></h3>
+            <input type="submit" value="Submit" class="submit_button" style="cursor:pointer">
+        </div>
+    </form>
+</body>
+<script>
+    async function startCam() {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        document.getElementById("cam").srcObject = stream;
+    }
+
+    startCam(); // starts automatically
+</script>
+</html>

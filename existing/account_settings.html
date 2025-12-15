@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account settings</title>
+    <style>
+        header {
+            background-color: #40457c;
+            border-radius: 10px;
+            color: #EEEEEE;
+            font-size: 32px;
+            font-family: sans-serif;
+            text-align: left;
+            height: 60px;
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 30px;
+
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+        button {
+            background-color: #898cc5;
+            border-radius: 5px;
+            border-width: 0px;
+            width: 120px;
+            height: 30px;
+            color: #F4F5FB;
+            cursor: pointer;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 370px;
+            border: solid 1px #EEEEEE;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th {
+            text-align: left;
+            padding-left: 10px;
+            padding-top: 9px;
+            padding-right: 200px;
+            padding-bottom: 6px;
+            background-color: #EEEEEE;
+        }
+        td {
+            padding: 6px;
+            background-color: #FFFFFF;
+            text-align: left;
+            padding-left: 10px;
+        }
+        .inline {
+            display: flex;
+            vertical-align: top;
+            margin-left: 50px;
+            margin-right: 225px;
+        }
+        .btn-group {
+            gap: 10px;
+            display: flex;
+        }
+        .data {
+            background-color: #E6E7EF;
+            padding: 15px;
+            padding-top: 5px;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .submit_button {
+            background-color: #898cc5;
+            color: whitesmoke;
+            height: 30px;
+            border-radius: 5px;
+            border-width: 0;
+            font-size:14px;
+            width: 100px;
+            display: flex;
+        }
+        h3 {
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body style="background-color: #FFFFFF; color: #080809">
+    <header><b>Account settings and information</b></header>
+    <hr>
+    <div class="data">
+        <h2>About my account</h2>
+        <h3>Unique ID: {{ id }}</h3>
+    </div>
+    <br>
+    <div class="data">
+        <div>
+        <form action="/configure" method="post">
+            <h2>Configure details</h2>
+            <h3>Name     <input type="text" id="name" name="name" placeholder="Name" value="{{ name }}"></h3>
+            <h3>Age      <input type="text" id="age" name="age" placeholder="Age" value="{{ age }}"></h3>
+            <h3>College  <input type="text" id="college" name="college" placeholder="College" value="{{ college }}"></h3>
+            <h3><label for="month">Birth month:</label>
+            <select id="month" name="month">
+            <option value="January"   {% if month == "January" %} selected {% endif %}>January</option>
+            <option value="February"  {% if month == "February" %} selected {% endif %}>February</option>
+            <option value="March"     {% if month == "March" %} selected {% endif %}>March</option>
+            <option value="April"     {% if month == "April" %} selected {% endif %}>April</option>
+            <option value="May"       {% if month == "May" %} selected {% endif %}>May</option>
+            <option value="June"      {% if month == "June" %} selected {% endif %}>June</option>
+            <option value="July"      {% if month == "July" %} selected {% endif %}>July</option>
+            <option value="August"    {% if month == "August" %} selected {% endif %}>August</option>
+            <option value="September" {% if month == "September" %} selected {% endif %}>September</option>
+            <option value="October"   {% if month == "October" %} selected {% endif %}>October</option>
+            <option value="November"  {% if month == "November" %} selected {% endif %}>November</option>
+            <option value="December"  {% if month == "December" %} selected {% endif %}>December</option>
+            </select>
+            Year    <input type="text" id="year" name="year" placeholder="Year" value="{{ year }}" style="width:150px;"></h3>
+            <div class="btn-group">
+            <input type="submit" value="Save" class="submit_button" style="cursor:pointer">
+        </form>
+        <form action="/cancel-configure" method="post" style="display:flex">
+            <button type="submit">Cancel</button>
+        </form>
+        </div>
+        </div>
+    </div>
+    <br>
+    <div class="data" style="background-color: #DADBE5;">
+        <h2 style="display: flex; align-items: top;">More options
+        <form action="/redirect_exit" method="post">
+            <button type="submit" style="background-color: #40457c; margin-left: 1150px;">Signout</button>
+        </form>
+        </h2>
+    </div>
+</body>
+</html>
