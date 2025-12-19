@@ -81,6 +81,17 @@
     }
 </style>
 <body style="background-image: linear-gradient(to right, #242745, #40457c);">
+    <script>
+    const ws = new WebSocket("ws://localhost:8000/ws/signup");
+
+    ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.id) {
+            // a recognized face is here → redirect immediately
+            window.location.href = "/";
+        }
+    };
+    </script>
     <h1>Welcome to the facial recognition portal! </h1>
     <h3 style="padding-left: 10px; color: rgb(231, 231, 231); display:flex">Sign-up as a new user
         <form action="/signin" method="post" style="display: flex" class="button_inline">
